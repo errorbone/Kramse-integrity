@@ -1,0 +1,7 @@
+sqlite3 db.sqlite
+sqlite> select * from users_customuser;
+1|pbkdf2_sha256$150000$kbTJv1gB3kuo$FKjk+SiDUBIUyj/PMkdEOKlnIvhuCnx+LkrttQHwscc=|2019-10-06 12:02:28.186765|1|soa|||code@aurehoej.net|1|1|2019-10-06 11:46:23.293827
+2|pbkdf2_sha256$150000$21mgpQVGrsFZ$bLmbWPremyZ5j6H0EGT/uAUW9S1lvKmfO48DkyrGq3c=|2019-10-06 12:11:13.228101|0|testhest|||testhest@aurehoej.net|0|1|2019-10-06 12:10:53.192912
+3|pbkdf2_sha256$150000$vLjV0LfsEZ5P$b4+RzAjkGRu626YxVrkGc4ihUvP4LX6c/3KGXUGuW44=|2019-10-06 12:39:59.444342|0|hest|hest|pære|code@aurehoej.net|0|1|2019-10-06 12:39:49.607054
+4|pbkdf2_sha256$150000$70dIB7YQylWf$NHbcDpBZkMImo87YQ7EhSFWK9mmxCs62E78v9cTO5rg=||0|abc|a|bc|abc@aurehoej.net|0|1|2019-10-06 16:24:36.387021
+sqlite> .exit

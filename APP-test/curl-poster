@@ -1,0 +1,52 @@
+LOGIN_URL=http://93.90.115.26:8080/users/signup/
+YOUR_USER='Svend'
+YOUR_EMAIL='svend@aurehoej.net'
+YOUR_FIRST_NAME='Svend'
+YOUR_LAST_NAME='Svendsen'
+YOUR_PASS1='slibbord'
+YOUR_PASS2='slibbord'
+COOKIES=cookies.txt
+CURL_BIN="curl -s -c $COOKIES -b $COOKIES -e $LOGIN_URL"
+
+echo " "
+echo " "
+
+echo -n "Django Auth: get csrftoken ..."
+echo " "
+echo " "
+
+
+$CURL_BIN $LOGIN_URL > /dev/null
+DJANGO_TOKEN="csrfmiddlewaretoken=$(grep csrftoken $COOKIES | sed 's/^.*csrftoken\s*//')"
+
+#cat $COOKIES
+#echo $DJANGO_TOKEN
+
+echo -n " Token retrieved - adding user ..."
+echo " "
+echo " "
+
+# this is a standard request
+##/users/signup/&username=abc&email=abcde%40aurehoej.net&first_name=agr&last_name=ffbc&password1=henrik42&password2=henrik42
+
+$CURL_BIN \
+    -d "$DJANGO_TOKEN&username=$YOUR_USER&email=$YOUR_EMAIL&first_name=$YOUR_FIRST_NAME&last_name=$YOUR_LAST_NAME&password1=$YOUR_PASS1&password2=$YOUR_PASS2" \
+    -X POST $LOGIN_URL
+
+#    -d "$DJANGO_TOKEN&username=$YOUR_USER&email=$YOUR_EMAIL&first_name=Benny&last_name=Baeverarm&password1=flunkerne&password2=flunkerne" \
+
+echo " User added succesfully "
+echo " "
+
+echo " Logout"
+echo " "
+echo " "
+
+#rm $COOKIES
+
+
+
+
+
+
+
