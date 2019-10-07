@@ -15,8 +15,8 @@ echo -n "Django Auth: get csrftoken ..."
 echo " "
 echo " "
 
-
 $CURL_BIN $LOGIN_URL > /dev/null
+
 DJANGO_TOKEN="csrfmiddlewaretoken=$(grep csrftoken $COOKIES | sed 's/^.*csrftoken\s*//')"
 
 #cat $COOKIES
@@ -25,20 +25,27 @@ DJANGO_TOKEN="csrfmiddlewaretoken=$(grep csrftoken $COOKIES | sed 's/^.*csrftoke
 echo -n " Token retrieved - adding user ..."
 echo " "
 echo " "
+echo  User $YOUR_USER
+echo  Email $YOUR_EMAIL
+echo  Firstname $YOUR_FIRST_NAME
+echo  Lastname $YOUR_LAST_NAME
+echo  First password entry $YOUR_PASS1
+echo  Second password entry $YOUR_PASS2
+
+echo " "
+echo " *********************************
+echo " "
+echo " "
+"
 
 # this is a standard request
 ##/users/signup/&username=abc&email=abcde%40aurehoej.net&first_name=agr&last_name=ffbc&password1=henrik42&password2=henrik42
-
 $CURL_BIN \
     -d "$DJANGO_TOKEN&username=$YOUR_USER&email=$YOUR_EMAIL&first_name=$YOUR_FIRST_NAME&last_name=$YOUR_LAST_NAME&password1=$YOUR_PASS1&password2=$YOUR_PASS2" \
     -X POST $LOGIN_URL
 
-#    -d "$DJANGO_TOKEN&username=$YOUR_USER&email=$YOUR_EMAIL&first_name=Benny&last_name=Baeverarm&password1=flunkerne&password2=flunkerne" \
 
-echo " User added succesfully "
-echo " "
-
-echo " Logout"
+echo " End of script "
 echo " "
 echo " "
 
